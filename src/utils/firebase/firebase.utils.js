@@ -6,7 +6,8 @@ import { getAuth,
     GoogleAuthProvider, 
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword, 
-    signOut} from 'firebase/auth';
+    signOut,
+    onAuthStateChanged} from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
@@ -41,10 +42,10 @@ export const createUserDocumentFromAuth = async(
     
     const userDocRef = doc(db, 'users', userAuth.uid);
 
-    console.log(userDocRef);
+    // console.log(userDocRef);
     const userSnapshot = await getDoc(userDocRef);
-    console.log(userSnapshot);
-    console.log(userSnapshot.exists());
+    // console.log(userSnapshot);
+    // console.log(userSnapshot.exists());
 
     if (!userSnapshot.exists()) {
         const { displayName, email } = userAuth;
@@ -80,4 +81,10 @@ export const signinAuthWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => {
     await signOut(auth);
+}
+
+//this is open listener, so sign in and out will trigger this. The issue  is we need stop it listening when unmount.
+export const onAuthStateChangedListener = (callback) => {
+
+    onAuthStateChanged(auth, callback);
 }
