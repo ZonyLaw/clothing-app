@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import FormInput from "../form-input/form-input.component";
 import Button from '../button/button.component';
 import { signInWithGooglePopup,
      createUserDocumentFromAuth,
     signinAuthWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 
+import { UserContext } from '../../contexts/user.context';
 
 const defaultFormFields = {
     email: '',
@@ -12,8 +13,10 @@ const defaultFormFields = {
 }
 
 
-const SignInForm = () => {
 
+const SignInForm = () => {
+    
+    const { setCurrentUser }= useContext(UserContext);
     const signInWithGoogle = async () => {
         const {user} = await signInWithGooglePopup();
         await createUserDocumentFromAuth(user);
@@ -31,8 +34,8 @@ const SignInForm = () => {
         event.preventDefault();
         
         try {
-            const response = await signinAuthWithEmailAndPassword(email, password)
-            console.log(response)
+            const { user } = await signinAuthWithEmailAndPassword(email, password);
+            setCurrentUser(user);
             resetFormFields();
         } catch(error){
             console.log(error);
@@ -43,6 +46,7 @@ const SignInForm = () => {
                 case 'auth/user-not-found':
                     alert('email does not exist.')
                     break;
+                
             }
                      
         }
