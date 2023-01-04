@@ -2,7 +2,7 @@ import Home from './routes/home/home.component';
 import {Routes, Route} from 'react-router-dom';
 import Navigation from './routes/navigation/navigation.components';
 import Authentication from './routes/authentication/authentication.component';
-import Shop from './components/shop/shop.components';
+import Shop from './routes/shop/shop.components';
 import Checkout from './routes/checkout/checkout.component';
 
 // const Shop = () => {
