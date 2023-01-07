@@ -1,6 +1,5 @@
 import { CategoryPreviewContainter, CatTitle, Preview  } from './category-preview.styles.jsx'
 import ProductCard from '../product-card/product-card.componenet'
-import { Link } from 'react-router-dom'
 
 
 const CategoryPreview = ( {title, products}) => {
