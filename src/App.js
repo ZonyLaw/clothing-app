@@ -31,7 +31,7 @@ const App=()=> {
         //this dispatch call all reducer function
         dispatch(setCurrentUser(user));
     })
-    return unsubscribe
+    return unsubscribe;
     //we add dispatch as react doesn't know this doesn't change, but get confusing as it may suggest it will run every time there is a dispatch.
     //an exception so better to leave it out.
   },[])
