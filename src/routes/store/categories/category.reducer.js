@@ -1,24 +1,30 @@
 // import { CATEGORIES_ACTION_TYPES } from "./category.type";
 import { createSlice } from "@reduxjs/toolkit";
-
+// import { selectCategoriesMap } from "./category.selector";
 
 export const CATEGORIES_INITAIL_STATE = {
-    categoriesMap: {items: 'testHat', item: {name: "test"}}
+    categoriesMap: {}
 }
 
 
-export const counterSlice = createSlice({
+export const categorySlice = createSlice({
     name: "categories",
     initialState: CATEGORIES_INITAIL_STATE,
     reducers: {
-        SET_CATEGORY_MAP: (state, action) => { return{...state, categoriesMap: action.payload }}
+        SET_CATEGORIES_MAP: (state,action) => { 
+            console.log("reducer", action.payload) 
+            state.categoriesMap = action.payload }
         
     }
 
+    
 })
-export const {SET_CATEGORY_MAP} = counterSlice.actions;
 
-export default counterSlice.reducer;
+export const {SET_CATEGORIES_MAP} = categorySlice.actions;
+
+export default categorySlice.reducer;
+
+
 
 
 // export const categoriesReducer = (

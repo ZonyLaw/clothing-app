@@ -4,8 +4,11 @@ import './shop.styles.scss'
 import Category from '../category/category.component'
 import { useEffect } from 'react'
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils'
-import { setCategoriesMap } from '../store/categories/category.action'
+
 import { useDispatch } from 'react-redux'
+// import { CATEGORIES_ACTION_TYPES } from '../store/categories/category.type'
+// import { setCategoriesMap } from '../store/categories/category.action'
+import { SET_CATEGORIES_MAP } from '../store/categories/category.reducer'
 
 
 
@@ -15,11 +18,15 @@ const Shop = () => {
 
 
     useEffect(()=> {
+        
         const getCategoriesMap = async () =>{
             const categoryMap = await getCategoriesAndDocuments()
-            // console.log(categoryMap);
-            dispatch(setCategoriesMap(categoryMap))
-
+           
+            // dispatch(setCategoriesMap(categoryMap))
+           
+            
+            dispatch (SET_CATEGORIES_MAP(categoryMap) )
+            console.log("after dispatch")
         }
 
         getCategoriesMap();
