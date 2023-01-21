@@ -8,9 +8,11 @@ import { setCategoriesMap } from '../store/categories/category.action'
 import { useDispatch } from 'react-redux'
 
 
+
 const Shop = () => {
    
     const dispatch = useDispatch();
+
 
     useEffect(()=> {
         const getCategoriesMap = async () =>{

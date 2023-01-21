@@ -3,20 +3,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export const CATEGORIES_INITAIL_STATE = {
-    categoriesMap: {}
+    categoriesMap: {items: 'testHat', item: {name: "test"}}
 }
+
 
 export const counterSlice = createSlice({
     name: "categories",
     initialState: CATEGORIES_INITAIL_STATE,
     reducers: {
-        SET_CATEGORY_MAP: (state) => {
-          return{ ...state, categoriesMap: payload}
-        }
+        SET_CATEGORY_MAP: (state, action) => { return{...state, categoriesMap: action.payload }}
+        
     }
 
 })
 export const {SET_CATEGORY_MAP} = counterSlice.actions;
+
+export default counterSlice.reducer;
+
+
 // export const categoriesReducer = (
 //         state = CATEGORIES_INITAIL_STATE, 
 //         action = {}
