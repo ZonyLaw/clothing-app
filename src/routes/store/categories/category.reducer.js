@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // import { selectCategoriesMap } from "./category.selector";
 
 export const CATEGORIES_INITAIL_STATE = {
-    categoriesMap: {}
+    categories: []
 }
 
 
@@ -11,16 +11,16 @@ export const categorySlice = createSlice({
     name: "categories",
     initialState: CATEGORIES_INITAIL_STATE,
     reducers: {
-        SET_CATEGORIES_MAP: (state,action) => { 
+        SET_CATEGORIES: (state, action) => { 
             console.log("reducer", action.payload) 
-            state.categoriesMap = action.payload }
+            state.categories = action.payload }
         
     }
 
     
 })
 
-export const {SET_CATEGORIES_MAP} = categorySlice.actions;
+export const {SET_CATEGORIES} = categorySlice.actions;
 
 export default categorySlice.reducer;
 
