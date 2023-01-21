@@ -5,14 +5,18 @@ import { selectCategoriesMap } from '../store/categories/category.selector';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../../components/product-card/product-card.componenet';
 
+
 const Category = () => {
+    //takes category from the url
     const { category } = useParams()
-    console.log(useParams())
+    console.log('render.re-rendering category component');
+    // console.log('useParams', useParams())
     const categoriesMap = useSelector(selectCategoriesMap);
-  
     const [products, setProducts] = useState(categoriesMap[category])
 
+
     useEffect (() => {
+        console.log('effect fired calling setProducts');
         setProducts(categoriesMap[category])
 
     }, [category, categoriesMap])
